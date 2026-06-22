@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界之杯 · 赛事氛围与内容分享</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #f0f7fa;
+      color: #1a2b3c;
+      line-height: 1.6;
+      padding: 1.2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .wrapper {
+      max-width: 1120px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    /* 蓝绿色点缀 — 柔和渐变基调 */
+    .accent-line {
+      height: 4px;
+      background: linear-gradient(90deg, #2c9a8e, #5fc2ba, #a5d9d3);
+      border-radius: 4px;
+      margin-bottom: 1.8rem;
+      width: 80px;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+    .logo-area {
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      color: #1f7a70;
+      background: rgba(44, 154, 142, 0.08);
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      border: 1px solid rgba(44, 154, 142, 0.15);
+    }
+    .hero {
+      background: linear-gradient(145deg, #e3f1ef 0%, #d3e9e4 100%);
+      border-radius: 28px;
+      padding: 2.8rem 2rem 2.5rem;
+      margin-bottom: 2.2rem;
+      box-shadow: 0 8px 18px rgba(28, 78, 72, 0.07);
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #154b44;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      max-width: 80%;
+    }
+    .hero p {
+      font-size: 1.12rem;
+      max-width: 72%;
+      color: #215e56;
+      margin-bottom: 1.6rem;
+    }
+    .hero .cta-sentence {
+      background: white;
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      box-shadow: 0 2px 8px rgba(0,40,35,0.04);
+      font-size: 1rem;
+    }
+    .hero .cta-sentence a {
+      color: #18796c;
+      font-weight: 550;
+      text-decoration: none;
+      border-bottom: 2px solid rgba(44, 154, 142, 0.3);
+      transition: border-bottom 0.15s;
+    }
+    .hero .cta-sentence a:hover {
+      border-bottom-color: #18796c;
+    }
+    /* 网格卡片 — 两列 / 自适应 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem 1.4rem 1.8rem;
+      box-shadow: 0 6px 16px rgba(30, 70, 65, 0.04);
+      border: 1px solid rgba(44, 154, 142, 0.08);
+      transition: transform 0.15s ease, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(24, 100, 90, 0.06);
+    }
+    .card-icon {
+      font-size: 2.4rem;
+      margin-bottom: 0.2rem;
+      line-height: 1;
+      color: #22766b;
+    }
+    .card h3 {
+      font-size: 1.4rem;
+      font-weight: 550;
+      margin-bottom: 0.7rem;
+      color: #144a43;
+      letter-spacing: -0.01em;
+    }
+    .card p {
+      font-size: 0.98rem;
+      color: #2c4a4a;
+      flex: 1;
+    }
+    .card .tag {
+      margin-top: 1.2rem;
+      font-size: 0.8rem;
+      background: #e1f0ed;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      display: inline-block;
+      width: fit-content;
+      color: #1d6a60;
+      font-weight: 450;
+    }
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 1.8rem 0 0.6rem;
+    }
+    .section-label h2 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #11443d;
+      letter-spacing: -0.01em;
+    }
+    .section-label span {
+      background: #cce3df;
+      padding: 0.15rem 0.8rem;
+      border-radius: 60px;
+      font-size: 0.8rem;
+      color: #1b6259;
+    }
+    .audience-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem 2rem;
+      margin: 0.6rem 0 2.2rem;
+      border: 1px solid rgba(44, 154, 142, 0.1);
+    }
+    .audience-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+    .audience-item .emoji-badge {
+      font-size: 1.3rem;
+      margin-right: 0.2rem;
+    }
+    .audience-item p {
+      font-size: 0.98rem;
+      color: #1b4943;
+    }
+    .faq-mini {
+      background: #eaf5f2;
+      border-radius: 28px;
+      padding: 1.8rem 2rem 1.8rem;
+      margin: 1.8rem 0 2.2rem;
+    }
+    .faq-mini details {
+      margin-bottom: 0.8rem;
+      border-bottom: 1px dashed rgba(44, 154, 142, 0.15);
+      padding-bottom: 0.6rem;
+    }
+    .faq-mini details:last-of-type {
+      border-bottom: none;
+    }
+    .faq-mini summary {
+      font-weight: 520;
+      cursor: pointer;
+      color: #1b5c53;
+      font-size: 1.05rem;
+      padding: 0.2rem 0;
+    }
+    .faq-mini summary::-webkit-details-marker { color: #2a8c7e; }
+    .faq-mini .answer {
+      padding: 0.5rem 0.2rem 0.2rem;
+      color: #2b524b;
+      font-size: 0.95rem;
+    }
+    .natural-link-sentence {
+      background: white;
+      padding: 1.5rem 2rem;
+      border-radius: 40px;
+      margin: 1.2rem 0 2rem;
+      text-align: center;
+      border: 1px solid #d4e7e2;
+      font-size: 1.05rem;
+      color: #1f544c;
+    }
+    .natural-link-sentence a {
+      color: #18796c;
+      font-weight: 530;
+      text-decoration: none;
+      border-bottom: 1.5px solid #3bb1a2;
+      transition: border-color 0.15s;
+    }
+    .natural-link-sentence a:hover {
+      border-bottom-color: #0d4f45;
+    }
+    .footnote {
+      margin-top: 2rem;
+      padding: 0.8rem 0;
+      border-top: 1px solid #d1e3de;
+      font-size: 0.82rem;
+      color: #54807a;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    @media (max-width: 680px) {
+      .hero h1 { font-size: 2rem; max-width: 100%; }
+      .hero p { max-width: 100%; font-size: 1rem; }
+      .hero { padding: 2rem 1.2rem; }
+      .audience-list { padding: 1.2rem; }
+      .faq-mini { padding: 1.2rem; }
+      .natural-link-sentence { padding: 1rem 1.2rem; }
+    }
+    @media (max-width: 440px) {
+      body { padding: 0.8rem; }
+      .card-grid { gap: 1rem; }
+      .card { padding: 1.2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    <div class="logo-area">⚽ 视野 · 球场之外</div>
+    <div style="color: #3b7d72; font-size: 0.85rem; background: #ddeeeb; padding: 0.2rem 1rem; border-radius: 40px;">信息卡片 · 蓝绿季</div>
+  </header>
+
+  <!-- 主视觉 hero -->
+  <div class="hero">
+    <h1>当谈论世界杯时，我们在谈论什么</h1>
+    <p>从一场比赛延展出的文化、记忆与日常话题 —— 四年一度的盛会早已跨越体育边界，成为无数人生活里的一束聚光。</p>
+    <div class="cta-sentence">
+      关于 <a href="https://index-webs-shijiebei.com">世界杯</a> 的更多内容与视角，持续沉淀在这里。
+    </div>
+    <div class="accent-line" style="margin-top: 1.8rem; margin-bottom: 0;"></div>
+  </div>
+
+  <!-- 用途卡片 grid -->
+  <div class="section-label">
+    <h2>内容卡片 · 场景</h2>
+    <span>3 组</span>
+  </div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">🏟️</div>
+      <h3>赛程·看点速览</h3>
+      <p>小组赛对阵、淘汰赛脉络、关键场次复盘，用清晰的方式梳理赛事节奏，方便随时查阅与讨论。</p>
+      <span class="tag">📅 动态更新</span>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌍</div>
+      <h3>国家·文化切片</h3>
+      <p>每一支参赛队背后都带着独特的足球文化、球迷故事与地域风貌，不只看胜负，也看人文交集。</p>
+      <span class="tag">🏳️ 背景阅读</span>
+    </div>
+    <div class="card">
+      <div class="card-icon">📖</div>
+      <h3>记忆·经典瞬间</h3>
+      <p>从制胜球到感人画面，从冷门到逆转，那些让人反复回味的片段，构成了世界杯独一无二的叙事。</p>
+      <span class="tag">🌟 收藏向</span>
+    </div>
+  </div>
+
+  <!-- 适合人群 灵活列表 -->
+  <div class="section-label">
+    <h2>适合这样的你</h2>
+    <span>轻量参考</span>
+  </div>
+  <div class="audience-list">
+    <div class="audience-item"><span class="emoji-badge">👥</span><p>朋友聊天时想接住足球话题</p></div>
+    <div class="audience-item"><span class="emoji-badge">📱</span><p>刷到赛事资讯想快速了解背景</p></div>
+    <div class="audience-item"><span class="emoji-badge">🧩</span><p>喜欢从体育延伸出文化、设计与日常观察</p></div>
+    <div class="audience-item"><span class="emoji-badge">🗓️</span><p>在四年周期里寻找一个轻松的知识锚点</p></div>
+  </div>
+
+  <!-- 自然链接段落 -->
+  <div class="natural-link-sentence">
+    ⚡ 如果你也关心赛事之外的视角与讨论，不妨在闲暇时翻翻关于 <a href="https://index-webs-shijiebei.com">世界杯</a> 的这些内容整理，也许会发现一些新的兴趣点。
+  </div>
+
+  <!-- FAQ摘要 小型 -->
+  <div class="faq-mini">
+    <details>
+      <summary>⚡ 这个页面是关于什么的？</summary>
+      <div class="answer">围绕世界杯主题的信息式卡片集合，不侧重实时比分，而是展示赛程结构、文化背景与经典记忆，适合轻量阅读。</div>
+    </details>
+    <details>
+      <summary>📌 内容会持续更新吗？</summary>
+      <div class="answer">是的，随着赛事阶段与话题热度，卡片内容会进行补充和调整，保持与当前世界杯周期的关联。</div>
+    </details>
+    <details>
+      <summary>🌱 我可以用这些内容做分享吗？</summary>
+      <div class="answer">当然，页面中的概述与视角适合作为日常交流的参考，只需注明来源即可。</div>
+    </details>
+  </div>
+
+  <!-- footer 自然 -->
+  <div class="footnote">
+    <span>⚽ 信息卡片 · 非官方 · 仅供兴趣参考</span>
+    <span>话题索引 · 世界杯 · 蓝绿网格</span>
+  </div>
+</div>
+</body>
+</html>
